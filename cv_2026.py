@@ -192,9 +192,9 @@ def create_resume():
     add_section_header(col1, "Profile", first=True)
     summary = (
         "Full-stack software engineer building production inventory, order and pricing systems for "
-        "e-commerce clients at Algoclan, working mainly with Node.js/Express, Next.js, FastAPI and MongoDB. "
-        "Final-year CSE student at CUET with top-10 finishes in 3+ national hackathons. I like taking messy real-world workflows (warehouse scanning, "
-        "stock reconciliation, market pricing) and turning them into reliable software."
+        "e-commerce clients at Algoclan. Final-year CSE student at CUET; 1st place at the Mysoftheaven × "
+        "CUET AI Hackathon, and top 10 in 3+ national hackathons. I like turning messy real-world "
+        "workflows into reliable software."
     )
     p = col1.add_paragraph(summary)
     p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
@@ -207,26 +207,29 @@ def create_resume():
         "listing platform for an e-commerce reseller, integrated with two major resale-marketplace APIs.",
         "Built the RFID/barcode scanning workflow end to end: batch scanning, EPC-to-UPC conversion, "
         "reviewable scan drafts, fallback lookups and retries for unknown items, and commit-to-inventory.",
-        "Built stock reconciliation against physical warehouse counts and applied a reconciled count of "
-        "~19,400 inventory rows to production, with rollback files prepared in advance.",
-        "Automated order ingestion and cross-marketplace delisting so sold items stop being listed "
-        "elsewhere; added multi-client onboarding and per-client inventory attribution.",
+        "Built stock reconciliation against physical warehouse counts and applied ~19,400 reconciled "
+        "inventory rows to production, with rollback files prepared in advance.",
+        "Automated order ingestion and cross-marketplace delisting to prevent overselling; added "
+        "multi-client onboarding and per-client attribution.",
         "Implemented four pricing strategies (competitive index, demand momentum, seasonality, market "
         "momentum) in a FastAPI repricing service, with scheduled bid/ask time-series collection and "
         "AI-generated price notifications.",
-        "Added audit logging, rate limiting, API-key auth and Swagger/OpenAPI docs to the platform API, "
-        "plus an AI chatbot that produces weekly inventory analysis with CSV export.",
-        "Dockerized and set up CI/CD for another product's Node.js backend.",
+        "Added audit logging, rate limiting, API-key auth, Swagger docs and an AI weekly-analysis "
+        "chatbot; Dockerized and set up CI/CD for another product's backend.",
     ]:
         add_bullet(col1, text)
+
+    add_entry(col1, "AI R&D Industrial Trainee (Team Lead), Mysoftheaven (BD) Ltd.", "Sep 2026")
+    add_bullet(col1, "Led a 3-person team building an AI Security Gateway against LLM prompt injection "
+                     "and data leakage (OWASP LLM01/02): leakage-safe pipeline over 26k records, layered "
+                     "regex/ML/DeBERTa detection, and an audit replacing an inflated 100% detection claim "
+                     "with honest held-out metrics.")
 
     add_section_header(col1, "Personal Projects")
     add_entry(col1, "LTSR: Learning Through Spaced Repetition", "React, Django REST, Celery",
               space_before=0)
-    add_bullet(col1, "Study app with flashcards scheduled by the SM-2 spaced-repetition algorithm, "
-                     "topic-organized notes and recurring tasks.")
-    add_bullet(col1, "Celery background jobs send email reminders; JWT auth and progress charts "
-                     "with Chart.js.")
+    add_bullet(col1, "Study app with SM-2 spaced-repetition flashcards, topic notes and recurring "
+                     "tasks; Celery jobs send email reminders, with JWT auth and Chart.js progress charts.")
 
     add_entry(col1, "HealthTwin: AI-Powered Healthcare Platform", "Next.js, Django, PostgreSQL")
     add_bullet(col1, "Patient–doctor platform with symptom tracking, prescription assistance and "
@@ -236,6 +239,13 @@ def create_resume():
     add_entry(col1, "ModelMate: AI Community Platform", "Django, PostgreSQL")
     add_bullet(col1, "Community web app where AI users share knowledge and discuss models, with "
                      "authentication and a REST API.")
+
+    add_section_header(col1, "Publication")
+    pub = col1.add_paragraph()
+    pub.add_run("Momentum: An E-Court Service and Lawyer Help Assistant Mobile Application").bold = True
+    venue = pub.add_run("\nPresented at 16th ICCCNT 2025, IIT Indore (with IEEE EPS & AICTE) · Jul 2025")
+    venue.italic = True
+    venue.font.size = Pt(9)
 
     # === RIGHT COLUMN ===
     def add_tight_bullet(cell, text):
@@ -258,8 +268,8 @@ def create_resume():
     for cat, items in skills_list:
         p = col2.add_paragraph()
         p.paragraph_format.space_after = Pt(4)
-        p.add_run(f"{cat}:").bold = True
-        p.add_run(f"\n{items}")
+        p.add_run(f"{cat}: ").bold = True
+        p.add_run(items)
 
     add_section_header(col2, "Education")
     e1 = col2.add_paragraph()
@@ -273,16 +283,24 @@ def create_resume():
     e2.add_run("\nBAF Shaheen College, Dhaka")
     e2.add_run("\nGPA 5.00 · 2021").italic = True
 
+    e3 = col2.add_paragraph()
+    e3.paragraph_format.space_before = Pt(6)
+    e3.add_run("Python (Django) Training, 80 hrs").bold = True
+    e3.add_run("\nEDGE Project, Bangladesh Computer Council, at CUET CSE")
+    e3.add_run("\nSep – Dec 2024").italic = True
+
     add_section_header(col2, "Achievements")
     for item in [
-        "Top-10 finishes in 3+ national hackathons (7+ competed)",
-        "Former Secretary, BAF Shaheen College Dhaka Math Club",
-        "President's Scout Award",
-        "Shapla Cub Award",
+        "1st Place, AI Hackathon by Mysoftheaven (BD) Ltd. & CUET CSE (2026)",
+        "Top 10 in 3+ national hackathons, incl. Micro-Ops, CUET CSE Fest 2025",
+        "Judge, BUILD@CUET Hackathon by MLH & Gemini (2026)",
+        "~500 problems solved on Codeforces & LeetCode",
+        "Former Secretary, BAF Shaheen College Math Club",
+        "President's Scout Award; Shapla Cub Award",
     ]:
         add_tight_bullet(col2, item)
 
-    doc.save('Jamil_Ahmad_Rupak_CV_2026.docx')
+    doc.save('Jamil_Ahmad_Rupak.docx')
 
 
 if __name__ == "__main__":
