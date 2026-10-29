@@ -231,10 +231,10 @@ def create_resume():
     add_bullet(col1, "Study app with SM-2 spaced-repetition flashcards, topic notes and recurring "
                      "tasks; Celery jobs send email reminders, with JWT auth and Chart.js progress charts.")
 
-    add_entry(col1, "HealthTwin: AI-Powered Healthcare Platform", "Next.js, Django, PostgreSQL")
-    add_bullet(col1, "Patient–doctor platform with symptom tracking, prescription assistance and "
-                     "AI-generated patient insights, built around a \"digital twin\" of each "
-                     "patient's health history.")
+    add_entry(col1, "Automed: AI-Powered Healthcare Platform", "Next.js, Express, MongoDB")
+    add_bullet(col1, "Live patient–doctor platform with multi-chamber scheduling, digital prescriptions "
+                     "matched to Bangladeshi drug brands, prescription OCR and AI patient summaries; "
+                     "patient-approved record access and audit logs of every record view.")
 
     add_entry(col1, "ModelMate: AI Community Platform", "Django, PostgreSQL")
     add_bullet(col1, "Community web app where AI users share knowledge and discuss models, with "
