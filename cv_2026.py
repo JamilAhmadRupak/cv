@@ -211,11 +211,12 @@ def create_resume():
         "inventory rows to production, with rollback files prepared in advance.",
         "Automated order ingestion and cross-marketplace delisting to prevent overselling; added "
         "multi-client onboarding and per-client attribution.",
-        "Implemented four pricing strategies (competitive index, demand momentum, seasonality, market "
-        "momentum) in a FastAPI repricing service, with scheduled bid/ask time-series collection and "
-        "AI-generated price notifications.",
-        "Added audit logging, rate limiting, API-key auth, Swagger docs and an AI weekly-analysis "
-        "chatbot; Dockerized and set up CI/CD for another product's backend.",
+        "Implemented four pricing strategies in a FastAPI repricing service, with scheduled bid/ask "
+        "time-series collection and AI-generated price notifications.",
+        "Built the weekly-analysis tool for the platform's tool-calling AI agent (Vercel AI SDK), and "
+        "n8n workflows that collect articles daily and upsert them into MongoDB without duplicates.",
+        "Added audit logging, rate limiting, API-key auth and Swagger docs; Dockerized and set up CI/CD "
+        "for another product's backend.",
     ]:
         add_bullet(col1, text)
 
@@ -237,8 +238,7 @@ def create_resume():
                      "patient-approved record access and audit logs of every record view.")
 
     add_entry(col1, "ModelMate: AI Community Platform", "Django, PostgreSQL")
-    add_bullet(col1, "Community web app where AI users share knowledge and discuss models, with "
-                     "authentication and a REST API.")
+    add_bullet(col1, "Community web app where AI users share knowledge and discuss models.")
 
     add_section_header(col1, "Publication")
     pub = col1.add_paragraph()
@@ -261,8 +261,8 @@ def create_resume():
         ("Backend", "Node.js, Express, FastAPI, Django REST Framework"),
         ("Frontend", "React, Next.js, Tailwind CSS, shadcn/ui"),
         ("Databases", "MongoDB, PostgreSQL, MySQL"),
-        ("AI", "Vercel AI SDK, OpenAI & Gemini APIs"),
-        ("DevOps & Tools", "Docker, CI/CD, Git, Swagger/OpenAPI, cron jobs, Celery"),
+        ("AI", "Tool-calling agents, Vercel AI SDK, OpenAI & Gemini APIs"),
+        ("DevOps & Tools", "Docker, CI/CD, Git, Swagger/OpenAPI, cron jobs, Celery, n8n"),
         ("Fundamentals", "Data Structures & Algorithms, OOP (C#), REST API design"),
     ]
     for cat, items in skills_list:
@@ -299,6 +299,13 @@ def create_resume():
         "President's Scout Award; Shapla Cub Award",
     ]:
         add_tight_bullet(col2, item)
+
+    # Word always puts a paragraph after the last table; keep it 1pt so it can't spill onto page 2.
+    tail = doc.add_paragraph()
+    tail.paragraph_format.space_before = Pt(0)
+    tail.paragraph_format.space_after = Pt(0)
+    tail.paragraph_format.line_spacing = Pt(1)
+    tail.add_run().font.size = Pt(1)
 
     doc.save('Jamil_Ahmad_Rupak.docx')
 
