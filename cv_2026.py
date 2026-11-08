@@ -257,7 +257,7 @@ def create_resume():
 
     add_section_header(col2, "Skills", first=True)
     skills_list = [
-        ("Languages", "JavaScript, Python, Java, C++, C# (coursework)"),
+        ("Languages", "JavaScript, Python, C++, C# (coursework)"),
         ("Backend", "Node.js, Express, FastAPI, Django REST Framework"),
         ("Frontend", "React, Next.js, Tailwind CSS, shadcn/ui"),
         ("Databases", "MongoDB, PostgreSQL, MySQL"),
